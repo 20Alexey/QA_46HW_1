@@ -24,6 +24,11 @@ public class CreateAccountTests  extends TestBase{
 
         click(By.cssSelector(".button-1.register-button"));
 
+       // driver.findElement(By.name("Log in")).click();
+         //driver.findElement(By.name("Log in")).clear();
+        //driver.findElement(By.cssSelector("input[value='Log in']"));
+        //driver.findElement(By.cssSelector("input[value='Log in']")).sendKeys();
+
         // driver.findElement(By.cssSelector(".register-button")).click();
        // Assert.assertTrue(isElementPresent(By.cssSelector("[href='/logout']")));
         //Assert.assertTrue(isElementPresents(By.cssSelector("[href='/logout']")));
@@ -37,13 +42,4 @@ public class CreateAccountTests  extends TestBase{
 
     }
 
-    public void type(By locator, String text) {
-        click(locator);
-        driver.findElement(locator).clear();
-        driver.findElement(locator).sendKeys(text);
-    }
-
-    public void click(By locator) {
-        driver.findElement(locator).click();
-    }
 }
