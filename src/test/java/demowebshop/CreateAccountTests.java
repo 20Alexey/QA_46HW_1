@@ -1,6 +1,7 @@
 package demowebshop;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CreateAccountTests  extends TestBase{
@@ -33,13 +34,41 @@ public class CreateAccountTests  extends TestBase{
        // Assert.assertTrue(isElementPresent(By.cssSelector("[href='/logout']")));
         //Assert.assertTrue(isElementPresents(By.cssSelector("[href='/logout']")));
         // Assert.assertTrue(isElementPresent(By.xpath("a[href='/logout']")));
+
         //ругается
+        RegistrationData registrationData = new RegistrationData(
+                "Alexey",
+                "Alexey",
+                "alexey" + System.currentTimeMillis() + "@gmail.com",
+                "A20112011a$",
+                "A20112011a$"
+        );
 
+        // Переход на страницу регистрации
+        click(By.cssSelector("[href='/login']"));
+        click(By.cssSelector("[href='/register']"));
 
+        // Заполнение формы регистрации
+        type(By.name("FirstName"), registrationData.getFirstName());
+        type(By.name("LastName"), registrationData.getLastName());
+        type(By.name("Email"), registrationData.getEmail());
+        type(By.name("Password"), registrationData.getPassword());
+        type(By.name("ConfirmPassword"), registrationData.getConfirmPassword());
 
+        // Отправка формы
+        click(By.xpath("//input[@id='register-button']"));///????
 
+        // Ожидание появления кнопки "Logout" (подтверждение успешной регистрации)
+       // waitForElementVisible(By.cssSelector("[href='/logout']"));
 
-
+        // Проверка, что пользователь зарегистрирован
+        Assert.assertTrue(isElementPresent(By.cssSelector("[href='/logout']")), "Logout link is not present, registration failed.");
     }
-
 }
+
+
+
+
+
+
+
